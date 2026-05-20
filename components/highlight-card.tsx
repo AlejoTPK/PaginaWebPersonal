@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 
 interface ComponentProps {
   title: string;
+  subtitle?: string;
   description: string[];
   icon?: ReactNode;
   highlights?: string[];
@@ -30,7 +31,7 @@ const highlightText = (text: string, highlights: string[]) => {
   );
 };
 
-const Component: FC<ComponentProps> = ({ title, description, icon, highlights = [] }) => {
+const Component: FC<ComponentProps> = ({ title, subtitle, description, icon, highlights = [] }) => {
   return (
     <div className="group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-rotate-1 h-full">
       <Card className="text-white rounded-2xl border border-border bg-card/50 shadow-2xl relative backdrop-blur-sm overflow-hidden hover:bg-card hover:border-primary/50 w-[350px] h-full">
@@ -57,9 +58,15 @@ const Component: FC<ComponentProps> = ({ title, description, icon, highlights = 
             </div>
           </div>
 
-          <h3 className="mb-4 text-3xl font-bold bg-gradient-to-r from-tech-blue to-purple-500 bg-clip-text text-transparent transform group-hover:scale-105 transition-transform duration-300">
+          <h3 className="mb-2 text-3xl font-bold bg-gradient-to-r from-tech-blue to-purple-500 bg-clip-text text-transparent transform group-hover:scale-105 transition-transform duration-300">
             {title}
           </h3>
+
+          {subtitle && (
+            <p className="mb-6 text-sm font-medium text-muted-foreground">
+              {subtitle}
+            </p>
+          )}
 
           <div className="space-y-3 max-w-sm flex-1">
             {description.map((line, idx) => (
