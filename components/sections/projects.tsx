@@ -28,13 +28,26 @@ const projects = [
     repo: "https://github.com/AlejoTPK/SalesPredict",
   },
   {
-    title: "SovereignCRM",
+    title: "Sovereign CRM",
     slug: "sovereigncrm",
     description:
-      "Plataforma de analítica y seguimiento de datos en tiempo real. Diseñada para empresas que necesitan soberanía total sobre sus datos de clientes y ventas.",
+      "CRM financiero con motor de IA en segundo plano para detección de anomalías 24/7, dashboard interactivo con WebSockets e integración de APIs financieras en tiempo real.",
     icon: Network,
-    tags: ["Next.js", "Qdrant", "TypeScript", "Tailwind"],
+    tags: ["FastAPI", "Reflex", "Groq", "PostgreSQL"],
     status: "En Desarrollo",
+    opencodeSkills: [
+      "design-md",
+      "enhance-prompt",
+      "fetch",
+      "git-commit",
+      "react-components",
+      "remotion",
+      "shadcn-ui",
+      "stitch-design",
+      "stitch-loop",
+      "taste-design",
+    ],
+    repo: "https://github.com/AlejoTPK/CRMBolsa",
   },
 ];
 

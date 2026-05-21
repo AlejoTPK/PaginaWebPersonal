@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
@@ -39,24 +39,39 @@ const projects = {
     },
   },
   sovereigncrm: {
-    title: "SovereignCRM",
+    title: "Sovereign CRM",
     description:
-      "Plataforma de analítica y seguimiento de datos en tiempo real. Diseñada para empresas que necesitan soberanía total sobre sus datos de clientes y ventas.",
+      "CRM financiero con analítica en tiempo real, motor de IA en segundo plano (Groq/Llama 3) para detección de anomalías 24/7, dashboard interactivo con WebSockets, integración de APIs financieras (Finnhub, OANDA, Yahoo Finance), y generación de resúmenes diarios automatizados. Construido con FastAPI, Reflex y PostgreSQL (TimescaleDB).",
     icon: "Network",
-    tags: ["Next.js", "Qdrant", "TypeScript", "Tailwind"],
+    tags: ["FastAPI", "Reflex", "Groq", "PostgreSQL"],
     status: "En Desarrollo",
+    gif: "https://res.cloudinary.com/dxhbunijg/video/upload/f_auto,q_auto/v1779382022/sovereign_bzrzua.mp4",
+    repo: "https://github.com/AlejoTPK/CRMBolsa",
+    opencodeSkills: [
+      "design-md",
+      "enhance-prompt",
+      "fetch",
+      "git-commit",
+      "react-components",
+      "remotion",
+      "shadcn-ui",
+      "stitch-design",
+      "stitch-loop",
+      "taste-design",
+    ],
     features: [
-      "CRM personalizado con soberanía de datos",
-      "Analítica de ventas en tiempo real",
-      "Búsqueda vectorial con Qdrant",
-      "Dashboard interactivo con métricas clave",
-      "Integración con APIs de terceros",
-      "Sistema de reportes automatizados",
+      "Motor de IA (Groq/Llama 3) para detección de anomalías 24/7",
+      "Analítica financiera y de ventas en tiempo real",
+      "Dashboard interactivo con WebSockets",
+      "Integración de APIs financieras (Finnhub, OANDA, Yahoo Finance)",
+      "Generación de resúmenes diarios automatizados",
+      "Almacenamiento de series temporales con TimescaleDB",
     ],
     techStack: {
-      frontend: ["Next.js", "TypeScript", "Tailwind CSS"],
-      database: ["Qdrant", "PostgreSQL"],
-      infra: ["Docker", "VPS"],
+      frontend: ["Reflex", "Tailwind CSS"],
+      backend: ["Python", "FastAPI", "WebSockets"],
+      ia: ["Groq", "Llama 3"],
+      data: ["PostgreSQL", "TimescaleDB"],
     },
   },
 };
@@ -157,11 +172,20 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
 
         <div className="flex flex-wrap gap-4 pt-8 border-t border-border/30">
+          {"demo" in project && typeof (project as Record<string, unknown>).demo === "string" && (
+            <a href={(project as Record<string, unknown>).demo as string} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="group border-green-500/40 text-green-400 hover:bg-green-500 hover:text-white transition-all">
+                <ExternalLink className="mr-2 h-5 w-5" />
+                Ver Demo
+                <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
+            </a>
+          )}
           {"repo" in project && project.repo && (
             <a href={project.repo as string} target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="outline" className="group border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all">
                 <Github className="mr-2 h-5 w-5" />
-                Repositorio
+                Ver Código
                 <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
             </a>

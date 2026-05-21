@@ -21,13 +21,22 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md"
+            className="flex flex-wrap items-center gap-3"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+              </span>
+              Ingeniero de Sistemas & IA
             </span>
-            Ingeniero de Sistemas & IA
+            <span className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1.5 text-sm font-medium text-green-400 backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400"></span>
+              </span>
+              Open to work
+            </span>
           </motion.div>
 
           <motion.h1

@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero";
+import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Stack } from "@/components/sections/stack";
 import { Projects } from "@/components/sections/projects";
@@ -19,6 +20,7 @@ export default function Home() {
       </a>
       <div id="main-content">
         <Hero />
+        <About />
         <Experience />
         <Stack />
         <Projects />
