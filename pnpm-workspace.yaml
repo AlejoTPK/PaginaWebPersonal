@@ -1,3 +1,5 @@
 allowBuilds:
   '@tsparticles/engine': true
   msw: false
+  sharp: true
+  unrs-resolver: true
