@@ -4,18 +4,28 @@ import { motion } from "framer-motion";
 import { GlowingCard } from "@/components/magic-ui/glowing-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Boxes, Network } from "lucide-react";
+import { ArrowUpRight, Brain, Network } from "lucide-react";
 import Link from "next/link";
 
 const projects = [
   {
-    title: "AutoOps",
-    slug: "autoops",
+    title: "SalesPredict (AI CRM)",
+    slug: "salespredict",
     description:
-      "Sistema de gestión de operaciones automatizadas. Orquesta flujos de trabajo complejos, monitorea métricas en tiempo real y reduce la intervención manual en pipelines críticos.",
-    icon: Boxes,
-    tags: ["n8n", "Docker", "Python", "PostgreSQL"],
+      "Plataforma CRM moderna impulsada por inteligencia artificial, diseñada para optimizar las ventas mediante modelos predictivos avanzados y analítica en tiempo real.",
+    icon: Brain,
+    tags: ["Next.js 15", "FastAPI", "XGBoost", "Docker"],
     status: "En Desarrollo",
+    opencodeSkills: [
+      "fastapi-expert",
+      "fastapi-templates",
+      "pandas-pro",
+      "postgres-pro",
+      "redis-development",
+      "tailwind-design-system",
+      "vercel-react-best-practices",
+    ],
+    repo: "https://github.com/AlejoTPK/SalesPredict",
   },
   {
     title: "SovereignCRM",
@@ -66,19 +76,13 @@ export function Projects() {
                       {project.title}
                     </h3>
                   </div>
-                  <Badge
-                    variant="secondary"
-                    className="bg-wine/20 text-wine-light border-none"
-                  >
-                    {project.status}
-                  </Badge>
                 </div>
 
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
                     <Badge
                       key={tag}
@@ -89,6 +93,12 @@ export function Projects() {
                     </Badge>
                   ))}
                 </div>
+
+                {"opencodeSkills" in project && (
+                  <p className="text-xs text-muted-foreground mb-4">
+                    <span className="text-primary font-medium">Desarrollado con:</span> OpenCode - Antigravity
+                  </p>
+                )}
 
                 <Link href={`/projects/${project.slug}`}>
                   <Button
