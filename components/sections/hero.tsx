@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, Terminal, Download } from "lucide-react";
 import dynamic from "next/dynamic";
 import { GooeyText } from "@/components/ui/gooey-text";
 import ShimmerText from "@/components/ui/shimmer-text";
@@ -77,6 +77,15 @@ export function Hero() {
                 <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-tech-blue to-blue-600 blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
               </span>
               <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </a>
+            <a
+              href="https://res.cloudinary.com/dxhbunijg/image/upload/f_auto,q_auto/v1779387799/CurrriculumAIAlejandro_page-0001_dh22dc.jpg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-300 font-semibold text-sm backdrop-blur-sm hover:bg-purple-500/20 hover:border-purple-500/50 hover:text-purple-200 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            >
+              <Download className="h-4 w-4" />
+              Descargar CV
             </a>
             <a
               href="#contact"

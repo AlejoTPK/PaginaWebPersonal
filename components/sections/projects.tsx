@@ -5,7 +5,7 @@ import { GlowingCard } from "@/components/magic-ui/glowing-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Brain, Network } from "lucide-react";
-import Link from "next/link";
+import { TransitionLink } from "@/components/transition-link";
 
 const projects = [
   {
@@ -113,7 +113,10 @@ export function Projects() {
                   </p>
                 )}
 
-                <Link href={`/projects/${project.slug}`}>
+                <TransitionLink
+                  href={`/projects/${project.slug}`}
+                  direction="forward"
+                >
                   <Button
                     variant="ghost"
                     className="group px-0 hover:bg-transparent hover:text-primary"
@@ -121,7 +124,7 @@ export function Projects() {
                     Ver Detalles
                     <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </Button>
-                </Link>
+                </TransitionLink>
               </GlowingCard>
             </motion.div>
           ))}

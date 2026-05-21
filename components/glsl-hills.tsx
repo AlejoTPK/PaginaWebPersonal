@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import { Mesh, PlaneGeometry, RawShaderMaterial, WebGLRenderer, Scene, PerspectiveCamera, Clock, Vector3 } from 'three';
 
 const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize = 256, speed = 0.5 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -9,7 +9,7 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
     // Plane class
     class Plane {
       uniforms: { time: { type: string; value: number } };
-      mesh: THREE.Mesh;
+      mesh: Mesh;
       time: number;
       constructor() {
         this.uniforms = {
@@ -20,9 +20,9 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
       }
 
       createMesh() {
-        return new THREE.Mesh(
-          new THREE.PlaneGeometry(planeSize, planeSize, planeSize, planeSize),
-          new THREE.RawShaderMaterial({
+        return new Mesh(
+          new PlaneGeometry(planeSize, planeSize, planeSize, planeSize),
+          new RawShaderMaterial({
             uniforms: this.uniforms,
             vertexShader: `
               #define GLSLIFY 1
@@ -155,10 +155,10 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
 
     // Three.js setup
     if (!canvasRef.current) return;
-    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, antialias: false });
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-    const clock = new THREE.Clock();
+    const renderer = new WebGLRenderer({ canvas: canvasRef.current, antialias: false });
+    const scene = new Scene();
+    const camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+    const clock = new Clock();
     const plane = new Plane();
 
     const resize = () => {
@@ -187,7 +187,7 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setClearColor(0x000000, 0);
       camera.position.set(0, 16, cameraZ);
-      camera.lookAt(new THREE.Vector3(0, 28, 0));
+      camera.lookAt(new Vector3(0, 28, 0));
       scene.add(plane.mesh);
       window.addEventListener('resize', resize);
       resize();
