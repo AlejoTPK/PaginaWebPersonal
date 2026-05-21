@@ -1,8 +1,35 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const siteUrl = "https://alejandrocastrillon.dev";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Alejandro Castrillón",
+  url: siteUrl,
+  jobTitle: "AI & Automation Engineer",
+  sameAs: [
+    "https://github.com/AlejoTPK",
+    "https://www.linkedin.com/in/alejandrocastrilloncardona",
+  ],
+  knowsAbout: [
+    "Inteligencia Artificial",
+    "Automatización",
+    "Backend Development",
+    "Data Analytics",
+    "Python",
+    "FastAPI",
+    "Next.js",
+    "Machine Learning",
+    "DevOps",
+  ],
+  description:
+    "Ingeniero especializado en IA, Automatización y Analítica de Datos. Diseño arquitecturas de software robustas y construyo agentes inteligentes.",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -67,7 +94,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "Xaqi2gbxUFOk2BE1efWdksHtinuo3H2ZR35ho32nmUc",
   },
 };
 
@@ -78,6 +105,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
@@ -86,6 +119,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

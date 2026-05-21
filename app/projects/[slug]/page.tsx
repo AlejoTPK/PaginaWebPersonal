@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
+import { TransitionLink } from "@/components/transition-link";
 
 const projects = {
   salespredict: {
@@ -90,10 +90,10 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   return (
     <main className="relative min-h-screen px-4 py-24 md:px-6 lg:px-8">
       <div className="container max-w-4xl mx-auto">
-        <Link href="/#projects" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2 py-1">
+        <TransitionLink href="/#projects" direction="back" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2 py-1">
           <ArrowLeft className="h-4 w-4" />
           Volver a Proyectos
-        </Link>
+        </TransitionLink>
 
         <div className="mb-12">
           <div className="flex items-start justify-between mb-6">
@@ -172,15 +172,6 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
 
         <div className="flex flex-wrap gap-4 pt-8 border-t border-border/30">
-          {"demo" in project && typeof (project as Record<string, unknown>).demo === "string" && (
-            <a href={(project as Record<string, unknown>).demo as string} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline" className="group border-green-500/40 text-green-400 hover:bg-green-500 hover:text-white transition-all">
-                <ExternalLink className="mr-2 h-5 w-5" />
-                Ver Demo
-                <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Button>
-            </a>
-          )}
           {"repo" in project && project.repo && (
             <a href={project.repo as string} target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="outline" className="group border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all">
